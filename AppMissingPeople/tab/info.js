@@ -6,7 +6,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 export default class Info extends React.Component{
     static navigationOptions = {
         tabBarLabel: 'เกี่ยวกับ',
-        tabBarIcon:<Icon name="info" size={px2dp(22)} color="#666"/>
+        //tabBarIcon : ({tintColor})=><Icon name="info" size={px2dp(22)} color={tintColor}/>,
+        //tabBarIcon : 
     }
     render() {
         return  <View style={styles.container}>
