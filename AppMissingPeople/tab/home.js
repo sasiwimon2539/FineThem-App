@@ -1,36 +1,81 @@
-import React, { Component } from 'react';
-import {StyleSheet,Text,View} from 'react-native';
-import {Icon} from 'react-native-elements';
+import React from 'react';
+import {StyleSheet,Text,View, ScrollView, Alert} from 'react-native';
+import {Icon, ListItem, Avatar} from 'react-native-elements';
 
 
 export default class Home extends React.Component{
+    constructor() {
+        super();
+        this.state = {};
+    }
+
     static navigationOptions = {
         tabBarLabel: 'หน้าแรก',
         tabBarIcon: ({tintColor}) => <Icon name="home"  size={30} color={tintColor}/> 
     }
+
+    getHome() {
+        this.setState({
+
+            //ชื่อตัวแปรออฟเจค
+            listData: [
+                {
+                    id: 1,
+                    imageURL: "https://pbs.twimg.com/profile_images/808475349671493632/nvi7WJf4.jpg",
+                    text: "Some Text1"
+                },
+                {
+                    id: 2,
+                    imageURL: "http://www.ultimateyoutubeguide.com/wp-content/uploads/2016/10/4-Custom-Thumbnail.jpg",
+                    text: "Some Text2"
+                },
+            ]
+        });
+    }
+
+    componentWillMount() { //อันนี้เป็นฟังค์ชั่นที่ให้แอพทำงาน ก่อนที่แอพจะ render หน้า
+        this.getHome();
+    }
+
     render() {
-        return  <View style={styles.container}>
-            <Text style={styles.welcome}>
-                This home page
-            </Text>
-        </View>
+        return (
+            <View style={styles.container}>
+                <ScrollView>
+                    
+                    {
+                        this.state.listData != null && //ตรวจสอบว่า this.state.listData เป็นค่าว่างหรือไม่ ถ้าไม่ให้ทำต่อข้างล่าง
+                        this.state.listData.map((result, key) => { //วนรูปอาเรย์จนกว่าจะครบ
+                            return (
+                                //ListItem, Avatar เป็นฟังค์ชั่นใน react-native-elements ที่น้องโหลดมา
+                                <ListItem 
+                                    key={key} //สำหรับการใช้ฟังค์ชั่น map ต้องใส่ key ไว้บนสุดเสมอ โดยจะรันตั้งแต่ 0 ถึง อาเรย์ตัวสุดท้าย
+                                    title={result.text}
+                                    avatar={
+                                        <Avatar
+                                            large //ขนาด
+                                            source={{uri: result.imageURL}} //url รูปภาพ
+                                            imageProps={{ resizeMode: "stretch" }}
+                                        />
+                                    }
+                                    underlayColor="#DDD" //เปลี่ยนสีตอนกด    
+                                    onPress={() => Alert.alert(`this list id: ${result.id}`) } //กดแล้วเรียกฟังคฺชั่นอะไร                           
+                                    
+                                />
+                            );
+                        })
+                    }
+                </ScrollView>
+            </View>
+        )
     }
 }
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
       backgroundColor: '#F5FCFF',
     },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-    },
-    instructions: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
+    avatar: {
+        height: 100,
+        width: 80,
     },
   });
