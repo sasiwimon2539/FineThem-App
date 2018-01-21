@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import {AppRegistry,Button,Image,StyleSheet,Text,View} from 'react-native';
+import {StyleSheet,Text,View} from 'react-native';
+import {Icon} from 'react-native-elements';
 
 
 export default class Home extends React.Component{
     static navigationOptions = {
-        tabBarLabel: 'หน้าแรก'
+        tabBarLabel: 'หน้าแรก',
+        tabBarIcon: ({tintColor}) => <Icon name="home"  size={30} color={tintColor}/> 
     }
     render() {
         return  <View style={styles.container}>

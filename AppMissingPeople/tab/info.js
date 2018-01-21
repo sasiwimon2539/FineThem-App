@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import {AppRegistry,Button,Image,StyleSheet,Text,View} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {StyleSheet,Text,View} from 'react-native';
+import {Icon} from 'react-native-elements';
+//import {Icon} from 'react-native-vector-icons/FontAwesome';
 
 
 export default class Info extends React.Component{
     static navigationOptions = {
         tabBarLabel: 'เกี่ยวกับ',
-        //tabBarIcon : ({tintColor})=><Icon name="info" size={px2dp(22)} color={tintColor}/>,
-        //tabBarIcon : 
+        tabBarIcon: ({tintColor}) => <Icon type='EvilIcons' name="info"  size={30} color={tintColor}/> 
     }
     render() {
         return  <View style={styles.container}>
             <Text style={styles.welcome}>
-                This info page
+                This profile page
             </Text>
         </View>
     }

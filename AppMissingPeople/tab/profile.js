@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {AppRegistry,Button,Image,StyleSheet,Text,View} from 'react-native';
-
+import {StyleSheet,Text,View} from 'react-native';
+import {Icon} from 'react-native-elements';
 
 export default class Profile extends React.Component{
     static navigationOptions = {
-        tabBarLabel: 'ผู้ใช้'
+        tabBarLabel: 'ผู้ใช้',
+        tabBarIcon: ({tintColor}) => <Icon name="people" type="FontAwesome" size={30} color={tintColor}/> 
     }
     render() {
         return  <View style={styles.container}>

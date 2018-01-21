@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {AppRegistry,Button,Image,StyleSheet,Text,View} from 'react-native';
-
+import {StyleSheet,Text,View} from 'react-native';
+import {Icon} from 'react-native-elements';
 
 export default class AddLost extends React.Component{
     static navigationOptions = {
-        tabBarLabel: 'แจ้งคนหาย'
+        tabBarLabel: 'แจ้งคนหาย',
+        tabBarIcon: ({tintColor}) => <Icon name="person-add"  size={30} color={tintColor}/> 
     }
     render() {
         return  <View style={styles.container}>
