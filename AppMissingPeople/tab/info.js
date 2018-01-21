@@ -12,7 +12,7 @@ export default class Info extends React.Component{
     render() {
         return  <View style={styles.container}>
             <Text style={styles.welcome}>
-                This info page
+                This profile page
             </Text>
         </View>
     }
