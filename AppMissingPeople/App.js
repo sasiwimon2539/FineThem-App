@@ -6,48 +6,13 @@ import AddLost from './tab/addLost';
 import Info from './tab/info';
 import Profile from './tab/profile';
 
-export const HomeStack = StackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions:{
-      title:'FindThem'
-    },
-  },
-})
-
-export const LostStack = StackNavigator({
-  AddLost:{
-    screen: AddLost,
-    navigationOptions:{
-      title:'แจ้งคนหาย'
-    },
-  },
-})
-
-export const ProfileStack = StackNavigator({
-  Profile:{
-    screen: Profile,
-    navigationOptions:{
-      title:'โปรไฟล์'
-    },
-  },
-})
-
-export const InfoStack = StackNavigator({
-  Info:{
-    screen: Info,
-    navigationOptions:{
-      title:'เกี่ยวกับ'
-    },
-  },
-})
 
 
 var MainScreenNavigator=TabNavigator({
-  tab1: {screen: HomeStack},
-  tab2: {screen: LostStack},
-  tab3: {screen: ProfileStack},
-  tab4: {screen: InfoStack}
+  tab1: {screen: Home},
+  tab2: {screen: AddLost},
+  tab3: {screen: Profile},
+  tab4: {screen: Info}
 },
 {
   tabBarPosition: 'bottom',
