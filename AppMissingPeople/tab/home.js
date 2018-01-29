@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet,Text,View, ScrollView, Alert} from 'react-native';
 import {Icon, ListItem, Avatar,SearchBar } from 'react-native-elements';
-import LostData from './tab/LostData';
+import LostData from './LostData';
 
 
 

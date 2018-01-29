@@ -110,6 +110,7 @@ export default class AddLost extends React.Component{
                             <TextInput
                                 style={{height: 40}}
                                 placeholder= ' '
+                                underlineColorAndroid="#FFF"
                                 onChangeText={(textname) => this.setState({textname})}
                             />
                         </View>
@@ -121,6 +122,7 @@ export default class AddLost extends React.Component{
                             <TextInput
                                 style={{height: 40}}
                                 placeholder= ' '
+                                underlineColorAndroid="#FFF"
                                 onChangeText={(textname) => this.setState({textname})}
                             />
                         </View>
@@ -132,6 +134,7 @@ export default class AddLost extends React.Component{
                             <TextInput
                                 style={{height: 40}}
                                 placeholder= ' '
+                                underlineColorAndroid="#FFF"
                                 onChangeText={(textname) => this.setState({textname})}
                             />
                         </View>
@@ -162,6 +165,7 @@ export default class AddLost extends React.Component{
                             <UselessTextInput
                                 multiline = {true}
                                 numberOfLines = {4}
+                                underlineColorAndroid="#FFF"
                                 onChangeText={(textdetail) => this.setState({textdetail})}
                                 value={this.state.textdetail}
                             />
@@ -176,6 +180,7 @@ export default class AddLost extends React.Component{
                                 
                                 title='ยืนยัน'
                                 color='#399CFE'
+                                onPress={() => {}}
                             />
                         </View>
                         

@@ -52,7 +52,8 @@ export default class Profile extends React.Component{
                         }}>
                         <Button
                             title='ออกจากระบบ'
-                            color='#399CFE'/>
+                            color='#399CFE'
+                            onPress={() => {}}/>
                     </View>
                 </View>
             </View>
