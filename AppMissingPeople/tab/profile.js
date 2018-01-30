@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
-import {StyleSheet,Text,View, ScrollView, Button} from 'react-native';
+import {StyleSheet,Text,View, ScrollView, Button, Image, TouchableOpacity} from 'react-native';
 import {Icon} from 'react-native-elements';
 import { TextField } from 'react-native-material-textfield';
+import { ImagePicker } from 'expo';
 
 export default class Profile extends React.Component{
+
+    constructor() {
+        super();
+        this.state = { loadImageSuccess: false, profileImage: { uri:"https://i.pinimg.com/originals/2c/db/b4/2cdbb484a0081c2931fc5258650818c7.jpg" } }
+    }
     static navigationOptions = {
         tabBarLabel: 'ผู้ใช้',
         tabBarIcon: ({tintColor}) => <Icon name="people" type="FontAwesome" size={30} color={tintColor}/> 
     }
+
+    errorImageHandle = () => {
+        this.setState({ profileImage: require('../image/no-image.png')})
+    }
+
+    _pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync().catch(() => { return; }); //catch เลิกทำต่อ ถ้าเกิด throw ใดๆ
+    
+        console.log(result);
+    
+        if (!result.cancelled) {
+          this.setState({ image: result.uri });
+        }
+      };
+
     render() {
         return(  
             <ScrollView>
@@ -25,17 +46,13 @@ export default class Profile extends React.Component{
                         height:200,
                         backgroundColor: 'white',
                         }}>
-                        <View style={{flex:1}}>
-                            <View style = {{
-                                height: 150,
-                                width: 150,
-                                backgroundColor: '#E1E1E1',
-                                borderRadius: 100,
-                                alignSelf: 'center',
-                                margin: 20,
-                                padding: 10
-                            }}>
-                            </View>
+                        <View style={styles.imageContainer}>
+                            <TouchableOpacity onPress={this._pickImage}>
+                                <Image source={this.state.profileImage}
+                                        onError={this.errorImageHandle}
+                                        resizeMode="contain"
+                                        style={styles.profileImage}/>
+                            </TouchableOpacity>
                         </View>
                     </View>
                     <View >
@@ -66,11 +83,6 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: 'white',
     },
-    instructions: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
-    },
     Header:{
         flexDirection: 'row', 
         backgroundColor: '#399CFE', 
@@ -92,5 +104,20 @@ const styles = StyleSheet.create({
         height : 40,
         paddingLeft: 10,
         borderRadius: 20,
+    },
+    imageContainer: {
+        height: 150,
+        width: 150,
+        flex: 1,
+        alignSelf: 'center'
+        //margin: 20,
+        //padding: 10
+    },
+    profileImage: {
+        height: '100%',
+        width: '100%',
+        maxHeight: 150,
+        maxWidth: 150,
+        borderRadius: 150
     },
   });

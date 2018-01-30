@@ -11,6 +11,7 @@ import {
     Image,
     } from 'react-native';
 import {Icon} from 'react-native-elements';
+import { MapView } from 'expo';
 //import { TextField } from 'react-native-material-textfield';
 
 class UselessTextInput extends Component {
@@ -46,6 +47,7 @@ export default class AddLost extends React.Component{
         this.state = {
             textname: '',
             textdetail: ' ',
+            LatLng: { latitude: 13.734320342036385, longitude: 100.53307402879},
             };
       }
     
@@ -154,8 +156,27 @@ export default class AddLost extends React.Component{
                         <Text style={styles.subtopic}>
                             สถานที่
                         </Text>                                             
-                        <View style={styles.TextInput}> 
+                        <View style={[styles.TextInput,{height: 200}]}> 
                             {/*เรียกใช้ map เพื่อ tag สถานที่ */}
+                            <MapView
+                                style={{ flex: 1 }}
+                                initialRegion={{
+                                    latitude: 13.734320342036385,
+                                    longitude: 100.53307402879,
+                                    latitudeDelta: 0.0922,
+                                    longitudeDelta: 0.0421,
+                                }}
+                                onPress={e => this.setState({ LatLng: e.nativeEvent.coordinate})}
+                            >
+                                <MapView.Marker
+                                    key={1}
+                                    coordinate={this.state.LatLng}
+                                    draggable
+                                    title={"Some Title"}
+                                    description={"Hello world"} 
+                                    onDragEnd={e => this.setState({ LatLng: e.nativeEvent.coordinate}) }
+                                />
+                            </MapView>
                         </View>
 
                         <Text style={styles.subtopic}>
