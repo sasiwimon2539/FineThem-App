@@ -35,7 +35,7 @@ export default class AddLost extends React.Component{
     }
     state = {
         spinnerDate: new Date(2018, 4, 5),
-        spinnerText:'',
+        spinnerText:'วันที่หาย',
         /*name: '',
         nickname:'',
         age:'',
@@ -111,8 +111,8 @@ export default class AddLost extends React.Component{
                         <View style={styles.TextInput}>
                             <TextInput
                                 style={{height: 40}}
-                                placeholder= ' '
-                                underlineColorAndroid="#FFF"
+                                placeholder= 'ชื่อ-สกุล'
+                                underlineColorAndroid="transparent"
                                 onChangeText={(textname) => this.setState({textname})}
                             />
                         </View>
@@ -123,8 +123,8 @@ export default class AddLost extends React.Component{
                         <View style={styles.TextInput}>
                             <TextInput
                                 style={{height: 40}}
-                                placeholder= ' '
-                                underlineColorAndroid="#FFF"
+                                placeholder= 'ชื่อเล่น '
+                                underlineColorAndroid="transparent"
                                 onChangeText={(textname) => this.setState({textname})}
                             />
                         </View>
@@ -135,8 +135,8 @@ export default class AddLost extends React.Component{
                         <View style={styles.TextInput}>
                             <TextInput
                                 style={{height: 40}}
-                                placeholder= ' '
-                                underlineColorAndroid="#FFF"
+                                placeholder= ' อายุ'
+                                underlineColorAndroid="transparent"
                                 onChangeText={(textname) => this.setState({textname})}
                             />
                         </View>
@@ -186,7 +186,7 @@ export default class AddLost extends React.Component{
                             <UselessTextInput
                                 multiline = {true}
                                 numberOfLines = {4}
-                                underlineColorAndroid="#FFF"
+                                underlineColorAndroid="transparent"
                                 onChangeText={(textdetail) => this.setState({textdetail})}
                                 value={this.state.textdetail}
                             />
@@ -250,11 +250,10 @@ const styles = StyleSheet.create({
 
     },
     TextInput:{
-        borderWidth:0.5,
-        borderColor: '#999',
         height : 40,
         paddingLeft: 10,
-        borderRadius: 20,
+        borderColor:'#999',
+        borderWidth:0.5,
     },
     detail:{
         borderColor: '#999',
